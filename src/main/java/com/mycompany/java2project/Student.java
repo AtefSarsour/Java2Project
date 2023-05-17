@@ -1,7 +1,6 @@
 package com.mycompany.java2project;
 
 import java.util.Date;
-
 public class Student extends Person {
 
     public static int getBaseCounter() {
@@ -56,5 +55,7 @@ public class Student extends Person {
     public String toString() {
         return "{" + "Username= " + super.getUserName() + " name= " + super.getName() + " university Id= " + getUniversityId() + "}\n";
     }
-
+public void solveExam(){
+    
+}
 }

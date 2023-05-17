@@ -9,6 +9,8 @@ import java.util.Collections;
 
 public class Exam {
 
+    int baseCounter;
+    int id;
     String examName;
     int numOfQuestions;
     int passGrade;
@@ -17,20 +19,20 @@ public class Exam {
     ArrayList<Exam> exams = new ArrayList();
     ArrayList<Question> examQuestions = new ArrayList();
 
-    private Exam(String examName, int numOfQuestions, int passGrade, int questionType) {
+    public Exam(String examName, int numOfQuestions, int passGrade, int questionType) {
         this.examName = examName;
+        this.id = baseCounter++;
         this.numOfQuestions = numOfQuestions;
         this.passGrade = passGrade;
         this.questionType = questionType;
-    }
-
-    public void makeExam(String examName, int numOfQuestions, int passGrade, int questionType) {
-        exams.add(new Exam(examName, numOfQuestions, passGrade, questionType));
+        exams.add(this);
         addQuestions();
         for (int i = 0; i <= numOfQuestions; i++) {
             examQuestions.add((Question) questionsoOfQuestionType.get(i));
         }
+
     }
+
     public void viewExams() {
         for (int i = 0; i < exams.size(); i++) {
             System.out.println(exams.get(i).toString() + "\n");
@@ -41,9 +43,16 @@ public class Exam {
         exam.toString();
     }
 
+    public void viewExamQuestions() {
+        for (int i = 0; i < numOfQuestions; i++) {
+            System.out.println(examQuestions.get(i));
+        }
+
+    }
+
     @Override
     public String toString() {
-        return "Exam{Exam name: " + examName + ", numOfQuestions=" + numOfQuestions + ", passGrade=" + passGrade + ", questionType=" + questionType + ", questionsoOfQuestionType=" + questionsoOfQuestionType + '}';
+        return "Exam{Exam name: " + examName + ", numOfQuestions=" + numOfQuestions + ", passGrade=" + passGrade + ", questionType=" + questionType + '}';
     }
 
     public void addQuestions() {

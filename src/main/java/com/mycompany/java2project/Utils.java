@@ -32,4 +32,7 @@ public class Utils {
         Questions.Question.questions.add(new FillTheBlankQuestion("What is the keywords that used to call super class constructor?", "super", 2));
         Questions.Question.questions.add(new FillTheBlankQuestion("What is the keywords that used to inherit from a class?", "extends", 2));
     }
+    public static void addExams() {
+       Exam exam = new Exam("Biology",5,5,2);
+    }
 }
