@@ -5,6 +5,7 @@ import Questions.MCQuestion;
 import Questions.Question;
 import static Questions.Question.questions;
 import Questions.TrueFalseQuestion;
+import com.mycompany.java2project.Exam;
 import com.mycompany.java2project.Utils;
 import java.util.Scanner;
 
@@ -14,6 +15,7 @@ public class Java2Project {
         Scanner in = new Scanner(System.in);
         Utils.addMembers();
         Utils.addQuestions();
+        
         int choice = 0;
         do {
             System.out.println("Enter Your choice, enter 4 to exit");
