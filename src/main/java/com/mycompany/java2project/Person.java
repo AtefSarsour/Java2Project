@@ -4,15 +4,15 @@ import java.util.ArrayList;
 
 public class Person {
 
-    static ArrayList<Teacher> teachers = new ArrayList();
-    static ArrayList<Student> students = new ArrayList();
+    public static ArrayList<Teacher> teachers = new ArrayList();
+    public static ArrayList<Student> students = new ArrayList();
 
     private String userName;
     private String password;
     private String name;
     private String birthDate;
     private boolean isMale;
-    String birthYear = birthDate.substring(birthDate.lastIndexOf("/") + 1, birthDate.length());
+    String birthYear;
 
     public Person(String userName, String password, String birthDate, boolean isMale, String name) {
         this.userName = userName;
@@ -20,6 +20,7 @@ public class Person {
         this.birthDate = birthDate;
         this.isMale = isMale;
         this.name = name;
+        birthYear = birthDate.substring(birthDate.lastIndexOf("/") + 1, birthDate.length());
     }
 
     public String getName() {

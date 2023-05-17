@@ -1,6 +1,8 @@
 package com.mycompany.java2project;
 
 import java.util.Date;
+import java.util.Scanner;
+
 public class Student extends Person {
 
     public static int getBaseCounter() {
@@ -11,6 +13,7 @@ public class Student extends Person {
     private static int baseCounter;
     private String universityId;
     private String currentYear = date.substring(date.length() - 4, date.length());
+    private int examMark;
 
     public Student(String userName, String password, String name, String birthDate, boolean isMale) {
         super(userName, password, birthDate, isMale, name);
@@ -55,7 +58,15 @@ public class Student extends Person {
     public String toString() {
         return "{" + "Username= " + super.getUserName() + " name= " + super.getName() + " university Id= " + getUniversityId() + "}\n";
     }
-public void solveExam(){
-    
-}
+
+    public void solveExam(Exam exam) {
+        for (int i = 0; i < exam.numOfQuestions; i++) {
+            System.out.println(exam.examQuestions.get(i));
+            System.out.println("Enter answer");
+            String answer = new Scanner(System.in).nextLine();
+            if (answer.equals(exam.examQuestions.get(i).getAnswer())) {
+                examMark += exam.examQuestions.get(i).getMark();
+            }
+        }
+    }
 }

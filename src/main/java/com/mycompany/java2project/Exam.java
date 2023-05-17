@@ -16,7 +16,7 @@ public class Exam {
     int passGrade;
     int questionType;
     ArrayList questionsoOfQuestionType = new ArrayList();
-    ArrayList<Exam> exams = new ArrayList();
+    public static ArrayList<Exam> exams = new ArrayList();
     ArrayList<Question> examQuestions = new ArrayList();
 
     public Exam(String examName, int numOfQuestions, int passGrade, int questionType) {
