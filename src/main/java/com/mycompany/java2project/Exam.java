@@ -31,7 +31,6 @@ public class Exam {
             examQuestions.add((Question) questionsoOfQuestionType.get(i));
         }
     }
-
     public void viewExams() {
         for (int i = 0; i < exams.size(); i++) {
             System.out.println(exams.get(i).toString() + "\n");
