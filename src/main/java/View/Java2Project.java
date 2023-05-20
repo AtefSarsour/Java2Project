@@ -3,7 +3,6 @@ package View;
 import Questions.FillTheBlankQuestion;
 import Questions.MCQuestion;
 import Questions.Question;
-import static Questions.Question.questions;
 import Questions.TrueFalseQuestion;
 import com.mycompany.java2project.Exam;
 import com.mycompany.java2project.Person;
@@ -29,7 +28,7 @@ public class Java2Project {
                     Question.viewQuestions();
                     break;
                 case 3:
-                    Person.students.get(1).solveExam(Exam.exams.get(1));
+                    Person.students.get(1).solveExam(Exam.exams.get(0));
                 case 4:
                     System.exit(0);
                     break;
@@ -60,7 +59,7 @@ public class Java2Project {
             case 1:
                 System.out.println("Enter the correct answer (true/false):");
                 String correctAnswer = new Scanner(System.in).nextLine();
-                questions.add(new TrueFalseQuestion(questionText, correctAnswer, marksWeight));
+                Utils.questions.add(new TrueFalseQuestion(questionText, correctAnswer, marksWeight));
                 break;
             
             case 2:
@@ -74,14 +73,14 @@ public class Java2Project {
                 }
                 System.out.println("Enter the correct answer (1-" + numChoices + "):");
                 int correctChoice = scanner.nextInt();
-                questions.add(new MCQuestion(marksWeight, questionText, choices, correctChoice));
+                Utils.questions.add(new MCQuestion(marksWeight, questionText, choices, correctChoice));
                 break;
             
             case 3:
                 System.out.println("Enter the correct answer:");
                 scanner.nextLine();
                 String correctAnswerText = scanner.nextLine();
-                questions.add(new FillTheBlankQuestion(questionText, correctAnswerText, marksWeight));
+                Utils.questions.add(new FillTheBlankQuestion(questionText, correctAnswerText, marksWeight));
                 break;
         }
     }

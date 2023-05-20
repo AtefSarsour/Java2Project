@@ -15,7 +15,7 @@ public class Exam {
     int numOfQuestions;
     int passGrade;
     int questionType;
-    ArrayList questionsoOfQuestionType = new ArrayList();
+    ArrayList<Question> questionsoOfQuestionType = new ArrayList();
     public static ArrayList<Exam> exams = new ArrayList();
     ArrayList<Question> examQuestions = new ArrayList();
 
@@ -25,9 +25,9 @@ public class Exam {
         this.numOfQuestions = numOfQuestions;
         this.passGrade = passGrade;
         this.questionType = questionType;
-        exams.add(this);
         addQuestions();
-        for (int i = 0; i <= numOfQuestions; i++) {
+        exams.add(this);
+        for (int i = 0; i < this.numOfQuestions; i++) {
             examQuestions.add((Question) questionsoOfQuestionType.get(i));
         }
 
@@ -59,15 +59,15 @@ public class Exam {
         sortQuestions();
         switch (questionType) {
             case 1:
-                questionsoOfQuestionType.add(Question.trueFalseQuestions);
+                questionsoOfQuestionType.addAll(Question.trueFalseQuestions);
                 Collections.shuffle(questionsoOfQuestionType);
                 break;
             case 2:
-                questionsoOfQuestionType.add(Question.mCQuestions);
+                questionsoOfQuestionType.addAll(Question.mCQuestions);
                 Collections.shuffle(questionsoOfQuestionType);
                 break;
             case 3:
-                questionsoOfQuestionType.add(Question.fillTheBlankQuestions);
+                questionsoOfQuestionType.addAll(Question.fillTheBlankQuestions);
                 Collections.shuffle(questionsoOfQuestionType);
                 break;
         }
