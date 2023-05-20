@@ -8,11 +8,16 @@ import java.util.ArrayList;
 
 public class Utils {
 
+    public static ArrayList<Person> persons = new ArrayList();
+
     public static ArrayList<Questions.Question> questions = new ArrayList();
 // this line is to inform you that Github is working! :)
 // no i want to make sure that github is working
 // no i want to make sure that github is working
+
     public static void addMembers() {
+        
+
         Person.teachers.add(new Teacher(2000, "Eng", "JafarAgha", "112233", "1/1/1997", true, "Jafar Al-Agha"));
         Person.teachers.add(new Teacher(1000, "Eng", "MohDalo", "112233", "1/1/1998", true, "Mohammed Al-Dalo"));
         Person.teachers.add(new Teacher(3000, "Eng", "EtafHadda", "112233", "1/1/1999", false, "Etaf Abu Hadda"));
@@ -21,6 +26,9 @@ public class Utils {
         Person.students.add(new Student("s1", "123456", "Ahmed Ali", "120180001", "1/1/2000", true));
         Person.students.add(new Student("s2", "123456", "Heba Ahmed", "120190001", "1/1/2001", false));
         Person.students.add(new Student("s3", "123456", "Dalia Mohammed ", "120200001", "1/1/2002", false));
+        persons.add(Admin.addAdmin("admin", "admin", "Admin", "1/1/2000", true, 9999));
+        persons.addAll(Person.teachers);
+        persons.addAll(Person.students);
     }
 
     public static void addQuestions() {
