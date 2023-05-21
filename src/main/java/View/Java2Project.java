@@ -9,7 +9,6 @@ import com.mycompany.java2project.Exam;
 import com.mycompany.java2project.Person;
 import com.mycompany.java2project.Student;
 import com.mycompany.java2project.Teacher;
-import com.mycompany.java2project.Utils;
 import java.util.Scanner;
 import com.mycompany.java2project.Utils;
 
@@ -26,7 +25,7 @@ public class Java2Project {
         String username = in.next();
         System.out.print("Password: ");
         String password = in.next();
-        System.out.println(validateLogin(username, password));
+        System.out.println(Utils.validateLogin(username, password));
         do {
             System.out.println("Enter Your choice, enter 4 to exit");
             choice = in.nextInt();
@@ -71,7 +70,6 @@ public class Java2Project {
                 String correctAnswer = new Scanner(System.in).nextLine();
                 Utils.questions.add(new TrueFalseQuestion(questionText, correctAnswer, marksWeight));
                 break;
-
             case 2:
                 System.out.println("Enter the number of choices (2-6):");
                 int numChoices = scanner.nextInt();
@@ -95,27 +93,5 @@ public class Java2Project {
         }
     }
 
-    public static boolean validateLogin(String userName, String password) {
-        String userType = null;
-        for (Person p : Utils.persons) {
-            if (userName.equals(p.getUserName())) {
-                if (password.equals(p.getPassword())) {
-                    if (p instanceof Admin a) {
-                        userType = "Admin";
-                    } else if (p instanceof Teacher t) {
-                        userType = "Teacher";
-                    } else if (p instanceof Student s) {
-                        userType = "Student";
-                    }
-                    System.out.println(userType);
-                    return true;
-                } else {
-                    System.out.println("Password is incorrect");
-                    return false;
-                }
-            }
-        }
-        System.out.println("Username not found");
-        return false;
-    }
+  
 }

@@ -47,4 +47,27 @@ public class Utils {
         Exam exam2 = new Exam("Chemistry", 2, 2, 1);
         Exam exam3 = new Exam("Arabic", 2, 2, 3);
     }
+ public static boolean validateLogin(String userName, String password) {
+        String userType = null;
+        for (Person p : Utils.persons) {
+            if (userName.equals(p.getUserName())) {
+                if (password.equals(p.getPassword())) {
+                    if (p instanceof Admin a) {
+                        userType = "Admin";
+                    } else if (p instanceof Teacher t) {
+                        userType = "Teacher";
+                    } else if (p instanceof Student s) {
+                        userType = "Student";
+                    }
+                    System.out.println(userType);
+                    return true;
+                } else {
+                    System.out.println("Password is incorrect");
+                    return false;
+                }
+            }
+        }
+        System.out.println("Username not found");
+        return false;
+    }
 }
