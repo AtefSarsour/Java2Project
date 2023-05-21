@@ -16,7 +16,6 @@ public class Utils {
 // no i want to make sure that github is working
 
     public static void addMembers() {
-        
 
         Person.teachers.add(new Teacher(2000, "Eng", "JafarAgha", "112233", "1/1/1997", true, "Jafar Al-Agha"));
         Person.teachers.add(new Teacher(1000, "Eng", "MohDalo", "112233", "1/1/1998", true, "Mohammed Al-Dalo"));
@@ -47,7 +46,8 @@ public class Utils {
         Exam exam2 = new Exam("Chemistry", 2, 2, 1);
         Exam exam3 = new Exam("Arabic", 2, 2, 3);
     }
- public static boolean validateLogin(String userName, String password) {
+
+    public static boolean validateLogin(String userName, String password) {
         String userType = null;
         for (Person p : Utils.persons) {
             if (userName.equals(p.getUserName())) {
@@ -69,5 +69,12 @@ public class Utils {
         }
         System.out.println("Username not found");
         return false;
+    }
+
+    public static void chooseExamToSolve() {
+        for (int i = 0; i < Exam.exams.size(); i++) {
+            Exam exam = Exam.exams.get(i);
+            System.out.println("* Exam (" + exam.getId() + ")\nExam name: " + exam.examName + "\nnumOfQuestions: " + exam.numOfQuestions + "\npassGrade: " + exam.passGrade + "\nquestionType: " + exam.questionType + " *\n");
+        }
     }
 }

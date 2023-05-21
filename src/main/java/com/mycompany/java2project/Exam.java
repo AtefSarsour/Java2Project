@@ -9,7 +9,7 @@ import java.util.Collections;
 
 public class Exam {
 
-    int baseCounter;
+    static int baseCounter;
     int id;
     String examName;
     int numOfQuestions;
@@ -21,7 +21,7 @@ public class Exam {
 
     public Exam(String examName, int numOfQuestions, int passGrade, int questionType) {
         this.examName = examName;
-        this.id = baseCounter++;
+        this.id = ++baseCounter;
         this.numOfQuestions = numOfQuestions;
         this.passGrade = passGrade;
         this.questionType = questionType;
@@ -30,7 +30,6 @@ public class Exam {
         for (int i = 0; i < this.numOfQuestions; i++) {
             examQuestions.add((Question) questionsoOfQuestionType.get(i));
         }
-
     }
 
     public void viewExams() {
@@ -47,12 +46,11 @@ public class Exam {
         for (int i = 0; i < numOfQuestions; i++) {
             System.out.println(examQuestions.get(i));
         }
-
     }
 
     @Override
     public String toString() {
-        return "Exam{Exam name: " + examName + ", numOfQuestions=" + numOfQuestions + ", passGrade=" + passGrade + ", questionType=" + questionType + '}';
+        return "*- Exam (" + this.getId() + ")\nExam name: " + examName + "\nnumOfQuestions: " + numOfQuestions + "\npassGrade: " + passGrade + "\nquestionType: " + questionType + " -*\n";
     }
 
     public void addQuestions() {
@@ -71,5 +69,77 @@ public class Exam {
                 Collections.shuffle(questionsoOfQuestionType);
                 break;
         }
+    }
+
+    public int getBaseCounter() {
+        return baseCounter;
+    }
+
+    public void setBaseCounter(int baseCounter) {
+        this.baseCounter = baseCounter;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getExamName() {
+        return examName;
+    }
+
+    public void setExamName(String examName) {
+        this.examName = examName;
+    }
+
+    public int getNumOfQuestions() {
+        return numOfQuestions;
+    }
+
+    public void setNumOfQuestions(int numOfQuestions) {
+        this.numOfQuestions = numOfQuestions;
+    }
+
+    public int getPassGrade() {
+        return passGrade;
+    }
+
+    public void setPassGrade(int passGrade) {
+        this.passGrade = passGrade;
+    }
+
+    public int getQuestionType() {
+        return questionType;
+    }
+
+    public void setQuestionType(int questionType) {
+        this.questionType = questionType;
+    }
+
+    public ArrayList<Question> getQuestionsoOfQuestionType() {
+        return questionsoOfQuestionType;
+    }
+
+    public void setQuestionsoOfQuestionType(ArrayList<Question> questionsoOfQuestionType) {
+        this.questionsoOfQuestionType = questionsoOfQuestionType;
+    }
+
+    public static ArrayList<Exam> getExams() {
+        return exams;
+    }
+
+    public static void setExams(ArrayList<Exam> exams) {
+        Exam.exams = exams;
+    }
+
+    public ArrayList<Question> getExamQuestions() {
+        return examQuestions;
+    }
+
+    public void setExamQuestions(ArrayList<Question> examQuestions) {
+        this.examQuestions = examQuestions;
     }
 }

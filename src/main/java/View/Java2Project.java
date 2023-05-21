@@ -41,7 +41,9 @@ public class Java2Project {
                 case 4:
                     System.exit(0);
                     break;
-
+                case 5:
+                    Utils.chooseExamToSolve();
+                    break;
             }
         } while (choice != 4);
 
@@ -92,6 +94,4 @@ public class Java2Project {
                 break;
         }
     }
-
-  
 }
