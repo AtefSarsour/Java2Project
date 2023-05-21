@@ -26,7 +26,7 @@ public class Java2Project {
         String username = in.next();
         System.out.print("Password: ");
         String password = in.next();
-        validateLogin(username, password);
+        System.out.println(validateLogin(username, password));
         do {
             System.out.println("Enter Your choice, enter 4 to exit");
             choice = in.nextInt();
@@ -96,47 +96,26 @@ public class Java2Project {
     }
 
     public static boolean validateLogin(String userName, String password) {
-        for (int i = 0; i < Utils.persons.size(); i++) {
-            if (Utils.persons.get(i) instanceof Admin a) {
-                if (userName.equals(a.getUserName())) {
-                    if (password.equals(a.getPassword())) {
-                        return true;
-                    } else {
-                        System.out.println("Password is incorrect");
-                        return false;
+        String userType = null;
+        for (Person p : Utils.persons) {
+            if (userName.equals(p.getUserName())) {
+                if (password.equals(p.getPassword())) {
+                    if (p instanceof Admin a) {
+                        userType = "Admin";
+                    } else if (p instanceof Teacher t) {
+                        userType = "Teacher";
+                    } else if (p instanceof Student s) {
+                        userType = "Student";
                     }
+                    System.out.println(userType);
+                    return true;
                 } else {
-                    System.out.println("Username is incorrect");
-                    return false;
-                }
-
-            } else if (Utils.persons.get(i) instanceof Teacher t) {
-                if (userName.equals(t.getUserName())) {
-                    if (password.equals(t.getPassword())) {
-                        return true;
-                    } else {
-                        System.out.println("Password is incorrect");
-                        return false;
-                    }
-                } else {
-                    System.out.println("Username is incorrect");
-                    return false;
-                }
-
-            } else if (Utils.persons.get(i) instanceof Student s) {
-                if (userName.equals(s.getUserName())) {
-                    if (password.equals(s.getPassword())) {
-                        return true;
-                    } else {
-                        System.out.println("Password is incorrect");
-                        return false;
-                    }
-                } else {
-                    System.out.println("Username is incorrect");
+                    System.out.println("Password is incorrect");
                     return false;
                 }
             }
         }
-        return true;
+        System.out.println("Username not found");
+        return false;
     }
 }
