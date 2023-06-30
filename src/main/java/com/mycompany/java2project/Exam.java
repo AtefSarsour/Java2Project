@@ -13,7 +13,7 @@ public class Exam {
     int numOfQuestions;
     int passGrade;
     int questionType;
-    ArrayList<Question> questionsoOfQuestionType = new ArrayList();
+  ArrayList<Question> questionsoOfQuestionType = new ArrayList<>();
     public static ArrayList<Exam> exams = new ArrayList();
     public static ArrayList<Question> examQuestions = new ArrayList();
 

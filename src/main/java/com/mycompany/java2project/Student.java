@@ -76,7 +76,7 @@ public class Student extends Person {
     public String toString() {
         return "{" + "Username= " + super.getUserName() + " name= " + super.getName() + " university Id= " + getUniversityId() + "}\n";
     }
-//------------------------------------------------------------
+//--------------------------------------------------------------------------------------
 
     ArrayList<String> studentAnswers = new ArrayList<>();
     ArrayList<Integer> examesmark = new ArrayList<>();
@@ -252,26 +252,24 @@ public class Student extends Person {
                 break;
         }
     }
+public int rankingStudents(String studentId, Question question) {
+    int rank = 1;
+    int studentMark = 0;
 
-    public int rankingStudents(String studentId) {
-        int rank = 1;
-        int studentMark = 0;
-
-        for (Student student : students) {
-            if (student.getUniversityId().equals(studentId)) {
-                studentMark = Question.getRealMark();
-//The Error in Question.getRealMark()
-                break;
-            }
+    for (Student student : students) {
+        if (student.getUniversityId().equals(studentId)) {
+            studentMark = question.getRealMark();
+            break;
         }
-
-        for (Student student : students) {
-            if (!student.getUniversityId().equals(studentId) && Question.getRealMark() > studentMark) {
-                rank++;
-            }
-        }
-
-        return rank;
     }
+
+    for (Student student : students) {
+        if (!student.getUniversityId().equals(studentId) && question.getRealMark() > studentMark) {
+            rank++;
+        }
+    }
+
+    return rank;
+}
 
 }
