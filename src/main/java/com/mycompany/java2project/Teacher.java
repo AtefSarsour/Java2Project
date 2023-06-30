@@ -4,14 +4,6 @@ import static com.mycompany.java2project.Person.students;
 
 public class Teacher extends Person implements Common {
 
-    public static int getBaseCounter() {
-        return baseCounter;
-    }
-
-    public static void setBaseCounter(int aBaseCounter) {
-        baseCounter = aBaseCounter;
-    }
-
     private int id;
     private int salary;
     private static int baseCounter;
@@ -22,6 +14,14 @@ public class Teacher extends Person implements Common {
         this.salary = salary;
         this.Specialty = Specialty;
         this.id = ++baseCounter;
+    }
+
+    public static int getBaseCounter() {
+        return baseCounter;
+    }
+
+    public static void setBaseCounter(int aBaseCounter) {
+        baseCounter = aBaseCounter;
     }
 
     public String getSpecialty() {
@@ -50,7 +50,7 @@ public class Teacher extends Person implements Common {
 
     @Override
     public void addStudent(String userName, String password, String name, String universityId, String birthDate, boolean isMale) {
-        students.add(new Student(userName, password, name, universityId, birthDate, isMale));
+        students.add(new Student(userName, password, name, universityId, birthDate,  isMale ));
     }
 
     @Override

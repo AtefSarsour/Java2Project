@@ -1,8 +1,5 @@
 package com.mycompany.java2project;
 
-import Questions.FillTheBlankQuestion;
-import Questions.MCQuestion;
-import Questions.TrueFalseQuestion;
 
 import java.util.ArrayList;
 
@@ -10,11 +7,11 @@ public class Utils {
 
     public static ArrayList<Person> persons = new ArrayList();
 
-    public static ArrayList<Questions.Question> questions = new ArrayList();
+    public static ArrayList<com.mycompany.java2project.Question> questions = new ArrayList();
+
 // this line is to inform you that Github is working! :)
 // no i want to make sure that github is working
-// no i want to make sure that github is working
-
+// no i want to make sure that github is working 
     public static void addMembers() {
 
         Person.teachers.add(new Teacher(2000, "Eng", "JafarAgha", "112233", "1/1/1997", true, "Jafar Al-Agha"));
@@ -46,17 +43,18 @@ public class Utils {
         Exam exam2 = new Exam("Chemistry", 2, 2, 1);
         Exam exam3 = new Exam("Arabic", 2, 2, 3);
     }
+//____________________________________________________________________________________________________________________________________
 
     public static boolean validateLogin(String userName, String password) {
         String userType = null;
         for (Person p : Utils.persons) {
             if (userName.equals(p.getUserName())) {
                 if (password.equals(p.getPassword())) {
-                    if (p instanceof Admin a) {
+                    if (isAdmin(p)) {
                         userType = "Admin";
-                    } else if (p instanceof Teacher t) {
+                    } else if (isTeacher(p)) {
                         userType = "Teacher";
-                    } else if (p instanceof Student s) {
+                    } else if (isStudent(p)) {
                         userType = "Student";
                     }
                     System.out.println(userType);
@@ -71,10 +69,28 @@ public class Utils {
         return false;
     }
 
+    private static boolean isAdmin(Person p) {
+        return p.getClass().equals(Admin.class);
+    }
+
+    private static boolean isTeacher(Person p) {
+        return p.getClass().equals(Teacher.class);
+    }
+
+    private static boolean isStudent(Person p) {
+        return p.getClass().equals(Student.class);
+    }
+//____________________________________________________________________________________________________________________________________
+        
+        
+
     public static void chooseExamToSolve() {
         for (int i = 0; i < Exam.exams.size(); i++) {
             Exam exam = Exam.exams.get(i);
             System.out.println("* Exam (" + exam.getId() + ")\nExam name: " + exam.examName + "\nnumOfQuestions: " + exam.numOfQuestions + "\npassGrade: " + exam.passGrade + "\nquestionType: " + exam.questionType + " *\n");
+       
         }
     }
 }
+
+

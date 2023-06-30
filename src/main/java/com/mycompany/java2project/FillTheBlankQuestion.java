@@ -1,4 +1,4 @@
-package Questions;
+package com.mycompany.java2project;
 
 import java.util.Scanner;
 
@@ -18,17 +18,17 @@ public class FillTheBlankQuestion extends Question {
         }
     }
 
-    @Override
-    String notValid() {
-        return "try again after validate if the question and the answer not empty!";
-    }
-
+    
     public String getAnswer() {
         return answer;
     }
 
     public void setAnswer(String answer) {
         this.answer = answer;
+    }
+    @Override
+    String notValid() {
+        return "try again after validate if the question and the answer not empty!";
     }
 
     @Override

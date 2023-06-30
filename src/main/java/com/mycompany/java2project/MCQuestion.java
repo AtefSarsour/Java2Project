@@ -1,6 +1,6 @@
-package Questions;
+package com.mycompany.java2project;
 
-import Questions.Question;
+import com.mycompany.java2project.Question;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -31,15 +31,13 @@ public class MCQuestion extends Question {
         this.choices = choices;
     }
 
+    public void setAnswer(int answer) {
+        this.answer = answer;
+    }
     @Override
     public String getAnswer() {
         return String.valueOf(answer);
     }
-
-    public void setAnswer(int answer) {
-        this.answer = answer;
-    }
-
     @Override
     String notValid() {
         return "cann't add this question because the choices not valid (2 to 6 choices)!";
@@ -57,6 +55,10 @@ public class MCQuestion extends Question {
             }
         }
         return s;
+    }
+
+    void setAnswer(String newText) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

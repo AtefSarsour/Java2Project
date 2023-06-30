@@ -15,12 +15,26 @@ public class Person {
     String birthYear;
 
     public Person(String userName, String password, String birthDate, boolean isMale, String name) {
-        this.userName = userName;
-        this.password = password;
-        this.birthDate = birthDate;
+
+        if (isValidUserName(userName)) {
+            this.userName = userName;
+        } else {
+            throw new IllegalArgumentException("Invalid userName");
+        }
+        if (isValidPassword(password)) {
+            this.password = password;
+        } else {
+            throw new IllegalArgumentException("Invalid password");
+        }
+        if (isValidBirthDate(birthDate)) {
+            this.birthDate = birthDate;
+            this.birthYear = birthDate.substring(birthDate.lastIndexOf("/") + 1);
+        } else {
+            throw new IllegalArgumentException("Invalid birthDate");
+        }
+
         this.isMale = isMale;
         this.name = name;
-        birthYear = birthDate.substring(birthDate.lastIndexOf("/") + 1, birthDate.length());
     }
 
     public String getName() {
@@ -59,8 +73,34 @@ public class Person {
         return isMale;
     }
 
-    public void setIsMale(boolean isMale) {
+    public void setIsMale(String gender) {
         this.isMale = isMale;
+    }
+
+    //_____________________________________________________________________________
+    private boolean isValidUserName(String userName) {
+        boolean isValidPassword = false;
+        if (!userName.isEmpty()){
+            isValidPassword = true;
+        }
+        return isValidPassword;
+    }
+
+    private boolean isValidPassword(String password) {
+        boolean isValidPassword = false;
+        if (password.length() >= 6) {
+            isValidPassword = true;
+        }
+        return isValidPassword;
+    }
+
+    private boolean isValidBirthDate(String birthDate) {
+        boolean isValidBirthDate = false;
+        String dateFormat = "\\d{2}/\\d{2}/\\d{4}";
+        if (birthDate.matches(dateFormat)) {
+            isValidBirthDate = true;
+        }
+        return isValidBirthDate;
     }
 
 }

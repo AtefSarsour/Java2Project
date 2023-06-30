@@ -1,6 +1,7 @@
-package Questions;
+package com.mycompany.java2project;
 
-import Questions.Question;
+import com.mycompany.java2project.Question;
+import com.mycompany.java2project.Question;
 import java.util.Scanner;
 
 public class TrueFalseQuestion extends Question {

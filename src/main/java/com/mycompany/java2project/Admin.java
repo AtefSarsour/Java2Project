@@ -7,7 +7,7 @@ public class Admin extends Person implements Common {
     private int id = 1;
     private int salary;
 
-    private Admin(String userName, String password, String name, String birthDate, boolean isMale, int salary) {
+    private Admin(String userName, String password, String name, String birthDate,  boolean isMale, int salary) {
         super(userName, password, birthDate, isMale, name);
         this.salary = salary;
     }
@@ -20,14 +20,15 @@ public class Admin extends Person implements Common {
         }
         return admin;
     }
-
+ 
     public void addTeacher(int salary, String Specialty, String userName, String password, String birthDate, boolean isMale, String name) {
-        teachers.add(new Teacher(salary, Specialty, userName, password, birthDate, isMale, name));
+        teachers.add(new Teacher(salary, Specialty, userName, password, birthDate,  isMale, name));
     }
-
     public String viewTeachers() {
         return teachers.toString();
     }
+
+   //note : view students & add student is an ovrerided method 
 
     public int getSalary() {
         return salary;
@@ -54,7 +55,7 @@ public class Admin extends Person implements Common {
     }
 
     @Override
-    public void addStudent(String userName, String password, String name, String universityId, String birthDate, boolean isMale) {
+    public void addStudent(String userName, String password, String name, String universityId, String birthDate, boolean isMale ) {
         students.add(new Student(userName, password, name, universityId, birthDate, isMale));
     }
 

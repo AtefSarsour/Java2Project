@@ -1,9 +1,9 @@
-package View;
+package com.mycompany.java2project;
 
-import Questions.FillTheBlankQuestion;
-import Questions.MCQuestion;
-import Questions.Question;
-import Questions.TrueFalseQuestion;
+import com.mycompany.java2project.FillTheBlankQuestion;
+import com.mycompany.java2project.MCQuestion;
+import com.mycompany.java2project.Question;
+import com.mycompany.java2project.TrueFalseQuestion;
 import com.mycompany.java2project.Admin;
 import com.mycompany.java2project.Exam;
 import com.mycompany.java2project.Person;
@@ -93,5 +93,7 @@ public class Java2Project {
                 Utils.questions.add(new FillTheBlankQuestion(questionText, correctAnswerText, marksWeight));
                 break;
         }
+        
     }
+    
 }

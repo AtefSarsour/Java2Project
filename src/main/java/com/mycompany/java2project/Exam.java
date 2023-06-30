@@ -1,23 +1,21 @@
 package com.mycompany.java2project;
 
-import Questions.Question;
-import static Questions.Question.sortQuestions;
-import Questions.TrueFalseQuestion;
+import static com.mycompany.java2project.Question.sortQuestions;
 import java.util.ArrayList;
-import View.Java2Project.*;
+import com.mycompany.java2project.Java2Project.*;
 import java.util.Collections;
 
 public class Exam {
 
-    static int baseCounter;
     int id;
+    static int baseCounter;
     String examName;
     int numOfQuestions;
     int passGrade;
     int questionType;
     ArrayList<Question> questionsoOfQuestionType = new ArrayList();
     public static ArrayList<Exam> exams = new ArrayList();
-    ArrayList<Question> examQuestions = new ArrayList();
+    public static ArrayList<Question> examQuestions = new ArrayList();
 
     public Exam(String examName, int numOfQuestions, int passGrade, int questionType) {
         this.examName = examName;
@@ -30,27 +28,6 @@ public class Exam {
         for (int i = 0; i < this.numOfQuestions; i++) {
             examQuestions.add((Question) questionsoOfQuestionType.get(i));
         }
-    }
-
-    public void viewExams() {
-        for (int i = 0; i < exams.size(); i++) {
-            System.out.println(exams.get(i).toString() + "\n");
-        }
-    }
-
-    public void viewExam(Exam exam) {
-        exam.toString();
-    }
-
-    public void viewExamQuestions() {
-        for (int i = 0; i < numOfQuestions; i++) {
-            System.out.println(examQuestions.get(i));
-        }
-    }
-
-    @Override
-    public String toString() {
-        return "*- Exam (" + this.getId() + ")\nExam name: " + examName + "\nnumOfQuestions: " + numOfQuestions + "\npassGrade: " + passGrade + "\nquestionType: " + questionType + " -*\n";
     }
 
     public void addQuestions() {
@@ -68,6 +45,22 @@ public class Exam {
                 questionsoOfQuestionType.addAll(Question.fillTheBlankQuestions);
                 Collections.shuffle(questionsoOfQuestionType);
                 break;
+        }
+    }
+
+    public static void viewExams() {
+        for (int i = 0; i < exams.size(); i++) {
+            System.out.println(exams.get(i).toString() + "\n");
+        }
+    }
+
+    public void viewExam(Exam exam) {
+        exam.toString();
+    }
+
+    public void viewExamQuestions() {
+        for (int i = 0; i < numOfQuestions; i++) {
+            System.out.println(examQuestions.get(i));
         }
     }
 
@@ -134,6 +127,7 @@ public class Exam {
     public static void setExams(ArrayList<Exam> exams) {
         Exam.exams = exams;
     }
+      //_____________________________________________________________________________________________________________________________________________________________________
 
     public ArrayList<Question> getExamQuestions() {
         return examQuestions;
@@ -141,5 +135,11 @@ public class Exam {
 
     public void setExamQuestions(ArrayList<Question> examQuestions) {
         this.examQuestions = examQuestions;
+    }
+
+    @Override
+    public String toString() {
+        return "*- Exam (" + this.getId() + ")\nExam name: " + examName + "\nnumOfQuestions: " + numOfQuestions + "\npassGrade: " + passGrade + "\nquestionType: " + questionType + " -*\n";
+  
     }
 }
