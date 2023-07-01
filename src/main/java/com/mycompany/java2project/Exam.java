@@ -3,7 +3,12 @@ package com.mycompany.java2project;
 import static com.mycompany.java2project.Question.sortQuestions;
 import java.util.ArrayList;
 import com.mycompany.java2project.Java2Project.*;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Collections;
+
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Exam {
 
@@ -162,5 +167,27 @@ public class Exam {
     public String toString() {
         return "Exam{" + "id=" + id + ", examName=" + examName + ", numOfQuestions=" + numOfQuestions + ", passGrade=" + passGrade + ", questionTypes=" + questionTypes + ", questionsoOfQuestionType=" + questionsoOfQuestionType + '}';
     }
+
+    public void exportExamResults(Student student) {
+        try {
+            FileWriter writer = new FileWriter("exam_results.txt");
+            writer.write("Exam Results for Student: " + student.getName() + "\n\n");
+
+            for (int i = 0; i < Exam.exams.size(); i++) {
+                Exam exam = Exam.exams.get(i);
+                int examMark = student.viewExamResult(i);
+
+                writer.write("Exam Name: " + exam.getExamName() + "\n");
+                writer.write("Exam Mark: " + examMark + "\n\n\n");
+            }
+
+            writer.close();
+            System.out.println("Exam results exported successfully to exam_results.txt");
+        } catch (IOException e) {
+            System.out.println("An error occurred while exporting exam results: " + e.getMessage());
+        }
+    }
+
+   
 
 }
