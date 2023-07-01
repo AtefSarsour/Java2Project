@@ -2,6 +2,7 @@ package com.mycompany.java2project;
 
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Utils {
 
@@ -81,16 +82,18 @@ public class Utils {
         return p.getClass().equals(Student.class);
     }
 //____________________________________________________________________________________________________________________________________
-        
+
         
 
-    public static void chooseExamToSolve() {
-        for (int i = 0; i < Exam.exams.size(); i++) {
-            Exam exam = Exam.exams.get(i);
-            System.out.println("* Exam (" + exam.getId() + ")\nExam name: " + exam.examName + "\nnumOfQuestions: " + exam.numOfQuestions + "\npassGrade: " + exam.passGrade + "\nquestionType: " + exam.questionType + " *\n");
-       
-        }
+  public static void chooseExamToSolve() {
+    for (int i = 0; i < Exam.exams.size(); i++) {
+        Exam exam = Exam.exams.get(i);
+        int[] questionTypes = exam.getQuestionTypes(); 
+        
+        System.out.println("* Exam (" + exam.getId() + ")\nExam name: " + exam.getExamName() + "\nnumOfQuestions: " + exam.getNumOfQuestions() + "\npassGrade: " + exam.getPassGrade() + "\nquestionType: " + Arrays.toString(questionTypes) + " *\n");
     }
+}
+
 }
 
 
