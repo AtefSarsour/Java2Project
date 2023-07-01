@@ -94,11 +94,11 @@ public class Student extends Person {
             System.out.println("Starting Exam: " + selectedExam.getExamName());
             System.out.println("Number of Questions: " + selectedExam.getNumOfQuestions());
             System.out.println("Passing Grade: " + selectedExam.getPassGrade());
-
+                
             int totalQuestions = selectedExam.getNumOfQuestions();
             int correctAnswers = 0;
             int totalMArk = 0;
-
+                
             //   for (int i = 0; i < totalQuestions; i++) {
             for (int i = 0; i < selectedExam.numOfQuestions; i++) {
 
@@ -252,6 +252,9 @@ public class Student extends Person {
                 break;
         }
     }
+   
+    
+    
 public int rankingStudents(String studentId, Question question) {
     int rank = 1;
     int studentMark = 0;
@@ -268,7 +271,7 @@ public int rankingStudents(String studentId, Question question) {
             rank++;
         }
     }
-
+    
     return rank;
 }
 

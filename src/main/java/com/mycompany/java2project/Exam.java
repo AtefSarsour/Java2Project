@@ -12,18 +12,29 @@ public class Exam {
     String examName;
     int numOfQuestions;
     int passGrade;
-    int questionType;
-  ArrayList<Question> questionsoOfQuestionType = new ArrayList<>();
+    private int[] questionTypes;
+    ArrayList<Question> questionsoOfQuestionType = new ArrayList();
     public static ArrayList<Exam> exams = new ArrayList();
     public static ArrayList<Question> examQuestions = new ArrayList();
 
-    public Exam(String examName, int numOfQuestions, int passGrade, int questionType) {
+    public Exam(String examName, int numOfQuestions, int passGrade, int... questionTypes) {
+        if (!(numOfQuestions <= 0)) {
+            this.numOfQuestions = numOfQuestions;
+        } else {
+            throw new IllegalArgumentException("numOfQuestions must be a positive integer.");
+        }
+        if (!(passGrade <= 0)) {
+            this.passGrade = passGrade;
+        } else {
+            throw new IllegalArgumentException("passGrade must be a positive integer.");
+        }
         this.examName = examName;
         this.id = ++baseCounter;
-        this.numOfQuestions = numOfQuestions;
-        this.passGrade = passGrade;
-        this.questionType = questionType;
+
+        validateQuestionTypes(questionTypes);
+        this.questionTypes = questionTypes;
         addQuestions();
+
         exams.add(this);
         for (int i = 0; i < this.numOfQuestions; i++) {
             examQuestions.add((Question) questionsoOfQuestionType.get(i));
@@ -32,19 +43,21 @@ public class Exam {
 
     public void addQuestions() {
         sortQuestions();
-        switch (questionType) {
-            case 1:
-                questionsoOfQuestionType.addAll(Question.trueFalseQuestions);
-                Collections.shuffle(questionsoOfQuestionType);
-                break;
-            case 2:
-                questionsoOfQuestionType.addAll(Question.mCQuestions);
-                Collections.shuffle(questionsoOfQuestionType);
-                break;
-            case 3:
-                questionsoOfQuestionType.addAll(Question.fillTheBlankQuestions);
-                Collections.shuffle(questionsoOfQuestionType);
-                break;
+        for (int type : questionTypes) {
+            switch (type) {
+                case 1:
+                    questionsoOfQuestionType.addAll(Question.trueFalseQuestions);
+                    Collections.shuffle(questionsoOfQuestionType);
+                    break;
+                case 2:
+                    questionsoOfQuestionType.addAll(Question.mCQuestions);
+                    Collections.shuffle(questionsoOfQuestionType);
+                    break;
+                case 3:
+                    questionsoOfQuestionType.addAll(Question.fillTheBlankQuestions);
+                    Collections.shuffle(questionsoOfQuestionType);
+                    break;
+            }
         }
     }
 
@@ -104,12 +117,12 @@ public class Exam {
         this.passGrade = passGrade;
     }
 
-    public int getQuestionType() {
-        return questionType;
+    public int[] getQuestionTypes() {
+        return questionTypes;
     }
 
-    public void setQuestionType(int questionType) {
-        this.questionType = questionType;
+    public void setQuestionTypes(int[] questionTypes) {
+        this.questionTypes = questionTypes;
     }
 
     public ArrayList<Question> getQuestionsoOfQuestionType() {
@@ -127,7 +140,7 @@ public class Exam {
     public static void setExams(ArrayList<Exam> exams) {
         Exam.exams = exams;
     }
-      //_____________________________________________________________________________________________________________________________________________________________________
+    //_____________________________________________________________________________________________________________________________________________________________________
 
     public ArrayList<Question> getExamQuestions() {
         return examQuestions;
@@ -137,9 +150,17 @@ public class Exam {
         this.examQuestions = examQuestions;
     }
 
+    private void validateQuestionTypes(int... questionTypes) {
+        for (int type : questionTypes) {
+            if (type < 1 || type > 3) {
+                throw new IllegalArgumentException("Invalid question type: " + type);
+            }
+        }
+    }
+
     @Override
     public String toString() {
-        return "*- Exam (" + this.getId() + ")\nExam name: " + examName + "\nnumOfQuestions: " + numOfQuestions + "\npassGrade: " + passGrade + "\nquestionType: " + questionType + " -*\n";
-  
+        return "Exam{" + "id=" + id + ", examName=" + examName + ", numOfQuestions=" + numOfQuestions + ", passGrade=" + passGrade + ", questionTypes=" + questionTypes + ", questionsoOfQuestionType=" + questionsoOfQuestionType + '}';
     }
+
 }

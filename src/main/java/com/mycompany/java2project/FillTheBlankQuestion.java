@@ -7,7 +7,7 @@ public class FillTheBlankQuestion extends Question {
     private String answer;
 
     public FillTheBlankQuestion(String question, String answer, int mark) {
-        if (!question.isEmpty() && !answer.isEmpty()) {
+        if (!question.isEmpty() && !answer.isEmpty()&& mark > 0) {
             super.setQuestionText(question);
             super.setMark(mark);
             this.answer = answer;
