@@ -32,9 +32,14 @@ public class Person {
         } else {
             throw new IllegalArgumentException("Invalid birthDate");
         }
+        if (isValidName(name)) {
+            this.name = name;
+        } else {
+            throw new IllegalArgumentException("Invalid name");
+        }
 
-        this.isMale = isMale;
-        this.name = name;
+    this.isMale = isMale;
+    
     }
 
     public String getName() {
@@ -78,10 +83,9 @@ public class Person {
     }
 
     //_____________________________________________________________________________
-    
     private boolean isValidUserName(String userName) {
         boolean isValidPassword = false;
-        if (!userName.isEmpty()){
+        if (!userName.isEmpty()) {
             isValidPassword = true;
         }
         return isValidPassword;
@@ -104,4 +108,14 @@ public class Person {
         return isValidBirthDate;
     }
 
+    private boolean isValidName(String name) {
+        boolean isValidName = false;
+        String nameFormat = "[a-zA-Z ]+";
+        if (name.matches(nameFormat)) {
+            isValidName = true;
+        }
+        return isValidName;
+    }
+
+   
 }
