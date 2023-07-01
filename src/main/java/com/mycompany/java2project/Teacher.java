@@ -7,12 +7,24 @@ public class Teacher extends Person implements Common {
     private int id;
     private int salary;
     private static int baseCounter;
-    private String Specialty;
+    private String specialty;
 
-    public Teacher(int salary, String Specialty, String userName, String password, String birthDate, boolean isMale, String name) {
+    public Teacher(int salary, String specialty, String userName, String password, String birthDate, boolean isMale, String name) {
         super(userName, password, birthDate, isMale, name);
+        
+     
+    if (salary >= 0) {
         this.salary = salary;
-        this.Specialty = Specialty;
+    } else {
+        throw new IllegalArgumentException("Invalid salary");
+}
+
+    if (specialty != null && !specialty.isEmpty()) {
+        this.specialty = specialty;
+    } else {
+        throw new IllegalArgumentException("Inter a valid specialty ");
+    }
+  
         this.id = ++baseCounter;
     }
 
@@ -24,13 +36,14 @@ public class Teacher extends Person implements Common {
         baseCounter = aBaseCounter;
     }
 
-    public String getSpecialty() {
-        return Specialty;
+   public String getSpecialty() {
+        return specialty;
     }
 
-    public void setSpecialty(String Specialty) {
-        this.Specialty = Specialty;
+    public void setSpecialty(String specialty) {
+        this.specialty = specialty;
     }
+
 
     public int getSalary() {
         return salary;
@@ -58,4 +71,5 @@ public class Teacher extends Person implements Common {
         return students.toString();
     }
 
+    
 }

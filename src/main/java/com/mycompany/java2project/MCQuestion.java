@@ -34,10 +34,16 @@ public class MCQuestion extends Question {
     public void setAnswer(int answer) {
         this.answer = answer;
     }
+
+    void setAnswer(String newText) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     @Override
     public String getAnswer() {
         return String.valueOf(answer);
     }
+
     @Override
     String notValid() {
         return "cann't add this question because the choices not valid (2 to 6 choices)!";
@@ -55,10 +61,6 @@ public class MCQuestion extends Question {
             }
         }
         return s;
-    }
-
-    void setAnswer(String newText) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

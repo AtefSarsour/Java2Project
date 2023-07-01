@@ -9,6 +9,7 @@ public class TrueFalseQuestion extends Question {
     private String answer = "true";
 
     public TrueFalseQuestion(String question, String answer, int mark) {
+        
         if (setAnswer(answer)) {
             super.setQuestionText(question);
             super.setMark(mark);
@@ -23,7 +24,7 @@ public class TrueFalseQuestion extends Question {
 
     public boolean setAnswer(String answer) {
         answer = answer.toLowerCase();
-        if (answer.toLowerCase().equals("yes") || answer.toLowerCase().equals("no")) {
+       if (answer.equalsIgnoreCase("yes") || answer.equalsIgnoreCase("no")){
             this.answer = answer;
             return true;
         } else {
