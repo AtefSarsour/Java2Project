@@ -20,6 +20,7 @@ public abstract class Question {
     abstract String notValid();
 
     public static void sortQuestions() {
+        
         for (int i = 0; i < Utils.questions.size(); i++) {
             if (Utils.questions.get(i) instanceof TrueFalseQuestion) {
                 trueFalseQuestions.add((TrueFalseQuestion) Utils.questions.get(i));

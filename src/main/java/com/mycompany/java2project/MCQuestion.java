@@ -10,6 +10,7 @@ public class MCQuestion extends Question {
     private int answer;
 
     public MCQuestion(int mark, String Question, String[] choices, int answer) {
+        
         int choicesNumber = choices.length;
         if (choicesNumber >= 2 && choicesNumber <= 6) {
             setChoices(choices);

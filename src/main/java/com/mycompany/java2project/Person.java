@@ -38,8 +38,8 @@ public class Person {
             throw new IllegalArgumentException("Invalid name");
         }
 
-    this.isMale = isMale;
-    
+        this.isMale = isMale;
+
     }
 
     public String getName() {
@@ -110,12 +110,11 @@ public class Person {
 
     private boolean isValidName(String name) {
         boolean isValidName = false;
-        String nameFormat = "[a-zA-Z ]+";
+        String nameFormat = "[a-zA-Z\\s-]+"; 
         if (name.matches(nameFormat)) {
             isValidName = true;
         }
         return isValidName;
     }
 
-   
 }

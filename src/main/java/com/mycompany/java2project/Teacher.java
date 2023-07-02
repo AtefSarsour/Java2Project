@@ -12,18 +12,14 @@ public class Teacher extends Person implements Common {
     public Teacher(int salary, String specialty, String userName, String password, String birthDate, boolean isMale, String name) {
         super(userName, password, birthDate, isMale, name);
         
-     
-    if (salary >= 0) {
+     if (salary >= 0) {
         this.salary = salary;
     } else {
         throw new IllegalArgumentException("Invalid salary");
-}
-
-    if (specialty != null && !specialty.isEmpty()) {
-        this.specialty = specialty;
-    } else {
-        throw new IllegalArgumentException("Inter a valid specialty ");
     }
+   
+        this.specialty = specialty;
+  
   
         this.id = ++baseCounter;
     }
